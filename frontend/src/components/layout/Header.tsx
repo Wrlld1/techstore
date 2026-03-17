@@ -7,10 +7,9 @@ import {
 } from '@mui/material';
 import {
   Search as SearchIcon, ShoppingCart, FavoriteBorder, Person,
-  DarkMode, LightMode, Compare, Close, TrendingUp,
+  Compare, Close, TrendingUp,
 } from '@mui/icons-material';
 import { useAppSelector, useAppDispatch } from '../../hooks/useRedux';
-import { toggleTheme } from '../../store/slices/uiSlice';
 import { logout } from '../../store/slices/authSlice';
 import api from '../../services/api';
 
@@ -29,8 +28,6 @@ const Header: React.FC = () => {
   const navigate = useNavigate();
   const { isAuthenticated, user } = useAppSelector((s) => s.auth);
   const cartItems = useAppSelector((s) => s.cart.items);
-  const themeMode = useAppSelector((s) => s.ui.themeMode);
-
   const [searchQuery, setSearchQuery] = useState('');
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
@@ -125,7 +122,7 @@ const Header: React.FC = () => {
                 onSubmit={handleSearch}
                 sx={{
                   display: 'flex', alignItems: 'center',
-                  bgcolor: theme.palette.mode === 'light' ? '#F1F5F9' : '#334155',
+                  bgcolor: '#F1F5F9',
                   borderRadius: showSuggestions && suggestions.length > 0 ? '12px 12px 0 0' : 2,
                   px: 2,
                   border: showSuggestions && suggestions.length > 0 ? `1px solid ${theme.palette.primary.main}` : 'none',
@@ -214,12 +211,6 @@ const Header: React.FC = () => {
 
           {/* Actions */}
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-            <Tooltip title={themeMode === 'light' ? 'Тёмная тема' : 'Светлая тема'}>
-              <IconButton onClick={() => dispatch(toggleTheme())} size="small">
-                {themeMode === 'light' ? <DarkMode /> : <LightMode />}
-              </IconButton>
-            </Tooltip>
-
             <Tooltip title="Сравнение">
               <IconButton component={Link} to="/compare" size="small"><Compare /></IconButton>
             </Tooltip>

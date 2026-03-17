@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
     <Box
       component="footer"
       sx={{
-        bgcolor: theme.palette.mode === 'light' ? '#1E293B' : '#0F172A',
+        bgcolor: '#1E293B',
         color: '#CBD5E1',
         mt: 'auto',
         pt: 6,

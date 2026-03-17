@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ThemeProvider, CssBaseline } from '@mui/material';
@@ -15,6 +15,7 @@ import AdminLayout from './components/layout/AdminLayout';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import ScrollToTop from './components/common/ScrollToTop';
 import ScrollToTopButton from './components/common/ScrollToTopButton';
+import ChatWidget from './components/chat/ChatWidget';
 
 // Pages (lazy loaded)
 const HomePage = React.lazy(() => import('./pages/home/HomePage'));
@@ -40,9 +41,8 @@ const AdminBrands = React.lazy(() => import('./pages/admin/BrandsPage'));
 
 function AppContent() {
   const dispatch = useAppDispatch();
-  const themeMode = useAppSelector((state) => state.ui.themeMode);
   const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
-  const theme = useMemo(() => getTheme(themeMode), [themeMode]);
+  const theme = getTheme();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -102,6 +102,7 @@ function AppContent() {
             </Route>
           </Routes>
           <ScrollToTopButton />
+          <ChatWidget />
         </React.Suspense>
       </BrowserRouter>
     </ThemeProvider>

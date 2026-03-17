@@ -8,6 +8,7 @@ import cartRoutes from './cart';
 import reviewRoutes from './reviews';
 import favoriteRoutes from './favorites';
 import adminRoutes from './admin';
+import chatRoutes from './chat';
 
 const router = Router();
 
@@ -20,5 +21,6 @@ router.use('/cart', cartRoutes);
 router.use('/reviews', reviewRoutes);
 router.use('/favorites', favoriteRoutes);
 router.use('/admin', adminRoutes);
+router.use('/chat', chatRoutes);
 
 export default router;

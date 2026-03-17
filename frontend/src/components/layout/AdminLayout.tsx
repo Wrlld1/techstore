@@ -6,10 +6,9 @@ import {
 } from '@mui/material';
 import {
   Dashboard, Inventory, ShoppingBag, RateReview, People,
-  ArrowBack, DarkMode, LightMode, Category, Storefront,
+  ArrowBack, Category, Storefront,
 } from '@mui/icons-material';
-import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
-import { toggleTheme } from '../../store/slices/uiSlice';
+import { useAppSelector } from '../../hooks/useRedux';
 
 const DRAWER_WIDTH = 260;
 
@@ -26,9 +25,6 @@ const menuItems = [
 const AdminLayout: React.FC = () => {
   const location = useLocation();
   const theme = useTheme();
-  const dispatch = useAppDispatch();
-  const themeMode = useAppSelector((s) => s.ui.themeMode);
-
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh' }}>
       {/* Sidebar */}
@@ -38,7 +34,7 @@ const AdminLayout: React.FC = () => {
           width: DRAWER_WIDTH,
           '& .MuiDrawer-paper': {
             width: DRAWER_WIDTH,
-            bgcolor: theme.palette.mode === 'light' ? '#1E293B' : '#0F172A',
+            bgcolor: '#1E293B',
             color: '#fff',
             borderRight: 'none',
           },
@@ -102,9 +98,6 @@ const AdminLayout: React.FC = () => {
             <Typography variant="h6" sx={{ flexGrow: 1 }}>
               {menuItems.find((i) => i.path === location.pathname)?.text || 'Админ'}
             </Typography>
-            <IconButton onClick={() => dispatch(toggleTheme())}>
-              {themeMode === 'light' ? <DarkMode /> : <LightMode />}
-            </IconButton>
           </Toolbar>
         </AppBar>
         <Box sx={{ flexGrow: 1, p: 3 }}>

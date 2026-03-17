@@ -254,7 +254,7 @@ const HomePage: React.FC = () => {
         <Container maxWidth="sm">
           <Typography variant="h4" fontWeight={700} sx={{ mb: 2 }}>Не нашли что искали?</Typography>
           <Typography variant="body1" sx={{ mb: 4, color: alpha('#fff', 0.8) }}>Напишите нам, и мы поможем подобрать технику</Typography>
-          <Button variant="contained" size="large" sx={{ bgcolor: '#fff', color: theme.palette.primary.dark, '&:hover': { bgcolor: alpha('#fff', 0.9) }, px: 5, py: 1.5 }}>
+          <Button variant="contained" size="large" href="mailto:info@techstore.kz" sx={{ bgcolor: '#fff', color: theme.palette.primary.dark, '&:hover': { bgcolor: alpha('#fff', 0.9) }, px: 5, py: 1.5 }}>
             Связаться с нами
           </Button>
         </Container>

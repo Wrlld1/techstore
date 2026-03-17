@@ -9,8 +9,7 @@ import { useAppDispatch } from '../../hooks/useRedux';
 import { addToCart } from '../../store/slices/cartSlice';
 import api from '../../services/api';
 import toast from 'react-hot-toast';
-
-const formatPrice = (price: number) => new Intl.NumberFormat('ru-RU').format(price) + ' ₸';
+import { getImageUrl, formatPrice } from '../../utils/helpers';
 
 const FavoritesPage: React.FC = () => {
   const theme = useTheme();
@@ -98,7 +97,7 @@ const FavoritesPage: React.FC = () => {
                     onClick={() => navigate(`/product/${p.slug}`)}
                   >
                     {mainImg ? (
-                      <Box component="img" src={mainImg} alt={p.name} sx={{ maxHeight: 140, objectFit: 'contain' }} />
+                      <Box component="img" src={getImageUrl(mainImg)} alt={p.name} sx={{ maxHeight: 140, objectFit: 'contain' }} />
                     ) : (
                       <Typography sx={{ fontSize: '3rem', opacity: 0.1 }}>📱</Typography>
                     )}

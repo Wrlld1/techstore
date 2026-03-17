@@ -1,11 +1,9 @@
 import { createTheme, ThemeOptions } from '@mui/material/styles';
 
-const getTheme = (mode: 'light' | 'dark') => {
-  const isLight = mode === 'light';
-
+const getTheme = () => {
   const options: ThemeOptions = {
     palette: {
-      mode,
+      mode: 'light',
       primary: {
         main: '#2563EB',
         light: '#60A5FA',
@@ -21,14 +19,14 @@ const getTheme = (mode: 'light' | 'dark') => {
       success: { main: '#10B981' },
       info: { main: '#06B6D4' },
       background: {
-        default: isLight ? '#F8FAFC' : '#0B1120',
-        paper: isLight ? '#FFFFFF' : '#151E31',
+        default: '#F8FAFC',
+        paper: '#FFFFFF',
       },
       text: {
-        primary: isLight ? '#1E293B' : '#E2E8F0',
-        secondary: isLight ? '#64748B' : '#94A3B8',
+        primary: '#1E293B',
+        secondary: '#64748B',
       },
-      divider: isLight ? '#E2E8F0' : '#1E293B',
+      divider: '#E2E8F0',
     },
     typography: {
       fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
@@ -66,14 +64,14 @@ const getTheme = (mode: 'light' | 'dark') => {
           },
           '::-webkit-scrollbar': { width: 8 },
           '::-webkit-scrollbar-track': {
-            background: isLight ? '#F1F5F9' : '#0F172A',
+            background: '#F1F5F9',
           },
           '::-webkit-scrollbar-thumb': {
-            background: isLight ? '#CBD5E1' : '#334155',
+            background: '#CBD5E1',
             borderRadius: 4,
           },
           '::-webkit-scrollbar-thumb:hover': {
-            background: isLight ? '#94A3B8' : '#475569',
+            background: '#94A3B8',
           },
           '::selection': {
             background: '#2563EB',
@@ -95,9 +93,7 @@ const getTheme = (mode: 'light' | 'dark') => {
           contained: {
             boxShadow: 'none',
             '&:hover': {
-              boxShadow: isLight
-                ? '0 4px 16px rgba(37, 99, 235, 0.35)'
-                : '0 4px 16px rgba(37, 99, 235, 0.25)',
+              boxShadow: '0 4px 16px rgba(37, 99, 235, 0.35)',
               transform: 'translateY(-1px)',
             },
           },
@@ -110,15 +106,13 @@ const getTheme = (mode: 'light' | 'dark') => {
         styleOverrides: {
           root: {
             borderRadius: 16,
-            border: `1px solid ${isLight ? '#E2E8F0' : '#1E293B'}`,
-            boxShadow: isLight ? '0 1px 3px rgba(0,0,0,0.06)' : 'none',
+            border: '1px solid #E2E8F0',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             '&:hover': {
               transform: 'translateY(-4px)',
-              boxShadow: isLight
-                ? '0 12px 32px rgba(0,0,0,0.1)'
-                : '0 12px 32px rgba(0,0,0,0.3)',
-              borderColor: isLight ? '#CBD5E1' : '#334155',
+              boxShadow: '0 12px 32px rgba(0,0,0,0.1)',
+              borderColor: '#CBD5E1',
             },
           },
         },
@@ -135,10 +129,10 @@ const getTheme = (mode: 'light' | 'dark') => {
               borderRadius: 10,
               transition: 'all 0.2s ease',
               '&:hover': {
-                boxShadow: `0 0 0 3px ${isLight ? 'rgba(37,99,235,0.06)' : 'rgba(37,99,235,0.1)'}`,
+                boxShadow: '0 0 0 3px rgba(37,99,235,0.06)',
               },
               '&.Mui-focused': {
-                boxShadow: `0 0 0 3px ${isLight ? 'rgba(37,99,235,0.12)' : 'rgba(37,99,235,0.2)'}`,
+                boxShadow: '0 0 0 3px rgba(37,99,235,0.12)',
               },
             },
           },
@@ -149,7 +143,7 @@ const getTheme = (mode: 'light' | 'dark') => {
           root: {
             boxShadow: 'none',
             backdropFilter: 'blur(12px)',
-            backgroundColor: isLight ? 'rgba(255,255,255,0.85)' : 'rgba(11,17,32,0.85)',
+            backgroundColor: 'rgba(255,255,255,0.85)',
           },
         },
       },
@@ -157,9 +151,7 @@ const getTheme = (mode: 'light' | 'dark') => {
         styleOverrides: {
           paper: {
             borderRadius: 20,
-            boxShadow: isLight
-              ? '0 25px 60px rgba(0,0,0,0.15)'
-              : '0 25px 60px rgba(0,0,0,0.5)',
+            boxShadow: '0 25px 60px rgba(0,0,0,0.15)',
           },
         },
       },

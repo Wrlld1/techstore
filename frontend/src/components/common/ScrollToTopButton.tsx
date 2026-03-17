@@ -18,7 +18,7 @@ const ScrollToTopButton: React.FC = () => {
         color="primary"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         sx={{
-          position: 'fixed', bottom: 24, right: 24, zIndex: 1200,
+          position: 'fixed', bottom: 96, right: 24, zIndex: 1200,
           boxShadow: '0 4px 16px rgba(37,99,235,0.3)',
           '&:hover': { transform: 'scale(1.1)' },
           transition: 'transform 0.2s ease',

@@ -149,7 +149,7 @@ const CatalogPage: React.FC = () => {
   const updateFilter = useCallback((key: string, value: string) => {
     const params = new URLSearchParams(searchParams);
     if (value) { params.set(key, value); } else { params.delete(key); }
-    params.set('page', '1');
+    if (key !== 'page') params.set('page', '1');
     setSearchParams(params);
   }, [searchParams, setSearchParams]);
 
@@ -220,7 +220,7 @@ const CatalogPage: React.FC = () => {
         <Collapse in={expandedSections.price}>
           <Slider value={priceRange} onChange={(_, val) => setPriceRange(val as [number, number])}
             onChangeCommitted={() => applyPriceRange()}
-            min={0} max={2000000} step={10000} valueLabelDisplay="auto" valueLabelFormat={(v) => formatPrice(v)} sx={{ mx: 1 }} />
+            min={0} max={2000000} step={10000} valueLabelDisplay="auto" valueLabelFormat={(v) => formatPrice(v)} sx={{ mx: 'auto', width: 'calc(100% - 24px)', display: 'block' }} />
           <Box sx={{ display: 'flex', gap: 1 }}>
             <TextField size="small" label="От" type="number" value={priceRange[0]}
               onChange={(e) => setPriceRange([parseInt(e.target.value) || 0, priceRange[1]])}
@@ -235,8 +235,8 @@ const CatalogPage: React.FC = () => {
       <Divider sx={{ my: 1 }} />
 
       {/* Other */}
-      <Box>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', cursor: 'pointer', py: 1 }} onClick={() => toggleSection('other')}>
+      <Box id="filter-other">
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', cursor: 'pointer', py: 1 }} onClick={() => { toggleSection('other'); if (!expandedSections.other) { setTimeout(() => { document.getElementById('filter-other-end')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 350); } }}>
           <Typography variant="subtitle2" fontWeight={600}>Другое</Typography>
           {expandedSections.other ? <ExpandLess fontSize="small" /> : <ExpandMore fontSize="small" />}
         </Box>
@@ -245,6 +245,7 @@ const CatalogPage: React.FC = () => {
             label={<Typography variant="body2">Только в наличии</Typography>} />
           <FormControlLabel control={<Checkbox checked={isNew} onChange={(e) => updateFilter('isNew', e.target.checked ? 'true' : '')} size="small" />}
             label={<Typography variant="body2">Новинки</Typography>} />
+          <div id="filter-other-end" />
         </Collapse>
       </Box>
     </Box>
